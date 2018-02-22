@@ -39,11 +39,11 @@ var path = d3.geoPath();
 
 // a escala de cores
 var color = d3.scaleThreshold()
-      .domain(d3.range(-30, 71, 20))
-      .range(d3.schemePRGn[6]);
+      .domain(d3.range(0, 81, 20))
+      .range(d3.schemeYlGnBu[5]);
 
 // função aux definida em legenda-d3-cor.js
-desenhaLegenda(-20, 61, color, "Crescimento entre 2011 e 2013 (pp*)")
+desenhaLegenda(0, 100, color, "Percentual Aprendizado Insuficiente (%)")
 
 d3.queue()
     .defer(d3.json, "geo4-municipios-e-aprendizado-simplificado.json")
@@ -60,7 +60,7 @@ function ready(error, dados) {
     .data(cidades)
     .enter()
     .append("path")
-      .attr("fill", d => {valor = d.properties["Crescimento entre 2011 e 2013 (pp*)"]; return valor === "NA" ? '#e0e0eb' : color(valor)})
+      .attr("fill", d => {valor = d.properties["Percentual Insuficiente (%)"]; return valor === "NA" ? '#e0e0eb' : color(valor)})
       .attr("d", path)
       .on("mouseover",showTooltip)
       .on("mousemove",moveTooltip)
@@ -94,7 +94,7 @@ function showTooltip(d) {
   moveTooltip();
 
   tooltip.style("display","block")
-      .text(d.properties.Cidade + ": " + d.properties["Crescimento entre 2011 e 2013 (pp*)"] + "%");
+      .text(d.properties.Cidade + ": " + d.properties["Percentual Insuficiente (%)"] + "%");
 }
 
 //Move the tooltip to track the mouse
