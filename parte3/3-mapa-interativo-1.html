@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<html>
-
 <meta charset="utf-8">
 <style>
 
@@ -26,9 +24,9 @@ div.tooltip {
 
 </style>
 
-<body>
+<div class="row container">
+  <div class="col-md-8 mychart" id="grafico">
 
-<div align= 'center' class="container">
 <svg width="1000" height="600"></svg>
 
 <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -45,11 +43,11 @@ var path = d3.geoPath();
 
 // a escala de cores
 var color = d3.scaleThreshold()
-      .domain(d3.range(0, 81, 20))
-      .range(d3.schemeYlGnBu[5]);
+      .domain(d3.range(-30, 80, 20))
+      .range(d3.schemePRGn[6]);
 
 // função aux definida em legenda-d3-cor.js
-desenhaLegenda(0, 100, color, "Percentual Aprendizado Insuficiente (%)")
+desenhaLegenda(0, 81, color, "Crescimento entre 2011 e 2013 (pp*)")
 
 d3.queue()
     .defer(d3.json, "geo4-municipios-e-aprendizado-simplificado.json")
@@ -66,7 +64,7 @@ function ready(error, dados) {
     .data(cidades)
     .enter()
     .append("path")
-      .attr("fill", d => {valor = d.properties["Percentual Insuficiente (%)"]; return valor === "NA" ? '#e0e0eb' : color(valor)})
+      .attr("fill", d => {valor = d.properties["Crescimento entre 2011 e 2013 (pp*)"]; return valor === "NA" ? '#e0e0eb' : color(valor)})
       .attr("d", path)
       .on("mouseover",showTooltip)
       .on("mousemove",moveTooltip)
@@ -100,7 +98,7 @@ function showTooltip(d) {
   moveTooltip();
 
   tooltip.style("display","block")
-      .text(d.properties.Cidade + ": " + d.properties["Percentual Insuficiente (%)"] + "%");
+      .text(d.properties.Cidade + ": " + d.properties["Crescimento entre 2011 e 2013 (pp*)"] + "%");
 }
 
 //Move the tooltip to track the mouse
@@ -116,11 +114,8 @@ function hideTooltip() {
 
 </script>
 
-<div class="row">
-  <br>
-  <h3>Foi </h3>
 </div>
-
-
-</body>
-</html>
+<div class="col-md-4 mychart" id="legenda">
+  <h1>TESTANDO</h1>
+  <a href="4-menos-terminal/3-mapa-interativo-1.html">Gráfico com o Aprendizado Adequado(%) gerado pelo professor</a>
+</div>
