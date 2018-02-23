@@ -22,10 +22,21 @@ div.tooltip {
   display: none;
 }
 
+h3 {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-align: justify;
+}
+
+h1{
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
 </style>
 
-<div class="row container">
-  <div class="col-md-8 mychart" id="grafico">
+<div align ="center" class="row container">
+  <div  class="col-md-8 mychart" id="grafico">
+
+    <h1>Crescimento entre 2011 e 2013</h1>
 
 <svg width="1000" height="600"></svg>
 
@@ -44,7 +55,7 @@ var path = d3.geoPath();
 // a escala de cores
 var color = d3.scaleThreshold()
       .domain(d3.range(-30, 80, 20))
-      .range(d3.schemePRGn[6]);
+      .range(d3.schemeRdBu[6]);
 
 // função aux definida em legenda-d3-cor.js
 desenhaLegenda(0, 81, color, "Crescimento entre 2011 e 2013 (pp*)")
@@ -116,6 +127,6 @@ function hideTooltip() {
 
 </div>
 <div class="col-md-4 mychart" id="legenda">
-  <h1>TESTANDO</h1>
+  <h3>Realizando uma comparação com o percentual de crescimento entre 2011 e 2013 e o aprendizado adequado na paraíba, podemos perceber algumas coisas bem preocupantes. Municípios como Catingueira, Mãe D'água, Caraúbas, entre outros que possuíam um percentual de aprendizado adequado abaixo de 20%, apresentam com um crescimento negativo. Podemos também perceber uma particularidade no município de Várzea, que apresenta um percentual de aprendizado acima de 60% mas em contraponto está com um crescimento na aprendizagem bem negativo. Um bom padrão que pode ser percebido é que em sua maioria os municípios com um bom aprendizado adequado mantém um crescimento positivo.</h3>
   <a href="4-menos-terminal/3-mapa-interativo-1.html">Gráfico com o Aprendizado Adequado(%) gerado pelo professor</a>
 </div>
