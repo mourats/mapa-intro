@@ -12,6 +12,10 @@ path:hover, path.highlighted {
   fill: tomato;
 }
 
+div {
+    padding: 15px;
+}
+
 div.tooltip {
   position: absolute;
   background-color: white;
@@ -23,12 +27,12 @@ div.tooltip {
 }
 
 h3 {
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: "avenir next", Arial, sans-serif;
     text-align: justify;
 }
 
 h1, a{
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: "avenir next", Arial, sans-serif;
 }
 
 </style>
@@ -55,7 +59,7 @@ var path = d3.geoPath();
 // a escala de cores
 var color = d3.scaleThreshold()
       .domain(d3.range(-30, 80, 20))
-      .range(d3.schemeRdBu[6]);
+      .range(d3.schemePRGn[6]);
 
 // função aux definida em legenda-d3-cor.js
 desenhaLegenda(0, 81, color, "Crescimento entre 2011 e 2013 (pp*)")
